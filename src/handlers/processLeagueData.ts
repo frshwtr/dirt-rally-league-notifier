@@ -1,6 +1,6 @@
 import { NotificationService } from "../model/NotificationService";
 import { Repository } from "../model/Repository";
-import { BoardEntry, LeagueBoard } from "../model/BoardEntry";
+import { BoardEntry, LeagueBoard } from "../model/League";
 import { difference } from "../util/diff";
 import { isLastElement } from "../util/isLastElement";
 

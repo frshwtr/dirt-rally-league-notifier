@@ -1,6 +1,6 @@
 import { processLeagueData } from "../src/handlers/processLeagueData";
 import { Repository } from "../src/model/Repository";
-import { BoardEntry } from "../src/model/BoardEntry";
+import { BoardEntry } from "../src/model/League";
 
 describe("given a league update is received", () => {
     let payload: BoardEntry[];
