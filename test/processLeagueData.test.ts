@@ -10,19 +10,19 @@ describe("given a league update is received", () => {
 
     beforeEach(() => {
         payload = [
-            { name: "Ben", playerDiff: "1234", position: 1, time: "1234" },
+            { name: "Ben", diffFirst: "1234", position: 1, time: "1234" },
             {
                 name: "Ben",
-                playerDiff: "1234",
+                diffFirst: "1234",
                 position: 2,
-                time: "1234",
-            },
+                time: "1234"
+            }
         ];
         leagueName = "myLeague";
         mockNotificationService = jest.fn();
         mockRepository = {
             push: jest.fn(),
-            get: jest.fn().mockReturnValueOnce({}).mockReturnValueOnce(payload),
+            get: jest.fn().mockReturnValueOnce({}).mockReturnValueOnce(payload)
         };
     });
     describe("when the update is the first", () => {

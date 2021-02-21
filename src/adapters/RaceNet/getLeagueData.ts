@@ -1,19 +1,25 @@
-import { League } from "../../model/League";
+import { League, ToLeagueBoard } from "../../model/League";
 import * as fetch from "node-fetch";
+import { RaceNetEventResponse } from "../../model/RaceNet";
 
-export const getLeagueData = async (): Promise<League> => {
-    await fetch("https://www.dirtgame.com/dirtrally/uk/api/event");
+export const getLeagueData = async (leagueName: string): Promise<League> => {
+    const response: RaceNetEventResponse = await fetch(
+        "https://www.dirtgame.com/dirtrally/uk/api/event"
+    );
 
-    return {
-        leagueName: "myLeague",
-        board: [
-            {
-                position: 1,
-                name: "Ben",
-                time: "1234",
-                playerDiff: "1234"
-            },
-            { position: 2, name: "Ben", time: "1234", playerDiff: "1234" }
-        ]
-    };
+    return mapToLeague(response, leagueName);
 };
+
+const mapToLeague: ToLeagueBoard<RaceNetEventResponse> = (
+    input,
+    leagueName: string
+) =>
+    ({
+        board: input.Entries.map((entry) => ({
+            position: entry.Position,
+            name: entry.Name,
+            time: entry.Time,
+            diffFirst: entry.DiffFirst.toString()
+        })),
+        leagueName
+    } as League);

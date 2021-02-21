@@ -22,7 +22,7 @@ const formatLeagueTable = (leagueTable: LeagueBoard) =>
         .map(
             (boardEntry: BoardEntry, index: number): string =>
                 `${boardEntry.position} ${boardEntry.name} ${boardEntry.time} ${
-                    boardEntry.playerDiff
+                    boardEntry.diffFirst
                 }${isLastElement(leagueTable, index) ? "\n" : ""}`
         )
         .reduce((acc: string, tableRow: string) => acc + tableRow);
